@@ -193,7 +193,7 @@
                     <h4 class="modal-title" id="userModal2"></h4>
                 </div>
                 <div class="modal-body">
-                    <form action="javascript:void(0)" id="userForm" name="userForm2" class="form-horizontal"
+                    <form action="javascript:void(0)" id="userForm" name="userForm" class="form-horizontal"
                         method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="{{ $data[0]->id }}">
                         <div class="form-group">
@@ -526,34 +526,6 @@
         }
     });
 
-    $('#userForm2').submit(function (e) {
-        e.preventDefault();
-        var formValid = $('#userForm').valid();
-        var formData = new FormData(this);
-        if (formValid) {
-            alert("successfull")
-        }
-        $.ajax({
-            type: 'POST',
-            url: "{{ url('store-user') }}",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: (data) => {
-                $("#user-modal1").modal('hide');
-                $("#user-modal2").modal('hide');
-                var oTable = $('#user-view').dataTable();
-                oTable.fnDraw(false);
-                $("#btn-save").html('Submit');
-                $("#btn-save").attr("disabled", false);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-    });
-</script>
-
+    
 
 </html>
